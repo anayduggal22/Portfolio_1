@@ -3,272 +3,437 @@
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anay Duggal | Portfolio</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: rgba(22, 20, 28, 0.7);
+      --ink: #f1edf7;
+      --ink-dim: #a39cb5;
+      --ink-faint: #6e6680;
+      --accent: #a855f7;
+      --accent-bright: #c084fc;
+      --accent-dim: rgba(168, 85, 247, 0.15);
+      --border: rgba(168, 85, 247, 0.18);
+      --mono: 'JetBrains Mono', monospace;
+      --display: 'Space Grotesk', sans-serif;
+      --body: 'Inter', sans-serif;
     }
+
+    body.light {
+      --bg: #faf3ed;
+      --bg-card: rgba(255, 255, 255, 0.65);
+      --ink: #2e2230;
+      --ink-dim: #6b5a6e;
+      --ink-faint: #9b8a9e;
+      --accent: #d6336c;
+      --accent-bright: #f06595;
+      --accent-dim: rgba(214, 51, 108, 0.1);
+      --border: rgba(214, 51, 108, 0.18);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: #000000;
-      transition: 0.4s;
-      color: #f5f5f5;
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--ink);
       line-height: 1.6;
+      transition: background 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 15% 0%, var(--accent-dim), transparent 60%),
+        radial-gradient(ellipse 500px 400px at 90% 30%, var(--accent-dim), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+      transition: background 0.4s ease;
     }
 
+    .container { width: 90%; max-width: 1080px; margin: auto; position: relative; z-index: 1; }
+
+    /* NAV */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 22px 0;
+      padding: 20px 0;
       position: sticky;
       top: 0;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(12px);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(14px);
       z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid var(--border);
     }
 
     nav h2 {
-      color: #a855f7;
+      font-family: var(--mono);
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: -0.5px;
     }
 
-    nav .right-nav {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
+    nav h2 span { color: var(--ink-faint); }
 
-    nav ul {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
+    .right-nav { display: flex; align-items: center; gap: 28px; }
+
+    nav ul { display: flex; gap: 26px; list-style: none; }
 
     nav a {
-      font-size: 0.95rem;
-      font-weight: 400;
-      color: white;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink-dim);
       text-decoration: none;
+      transition: color 0.25s;
+      letter-spacing: 0.2px;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .theme-toggle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 1.1rem;
+      background: var(--bg-card);
+      color: var(--ink);
       transition: 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    nav a:hover {
-      color: #a855f7;
-    }
+    .theme-toggle:hover { transform: rotate(15deg) scale(1.08); border-color: var(--accent); }
 
+    /* HERO */
     .hero {
-      min-height: 85vh;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      text-align: center;
+      padding: 60px 0;
     }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
 
     .hero h1 {
-      background: linear-gradient(135deg, #ffffff, #a855f7, #c084fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-family: var(--display);
       font-weight: 600;
-      letter-spacing: -1px;
-      font-size: 3rem;
-      margin-bottom: 10px;
+      letter-spacing: -1.5px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.08;
+      margin-bottom: 22px;
+      max-width: 760px;
     }
 
-    .hero h1 span {
-      color: #a855f7;
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--accent-bright), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero p {
-      max-width: 700px;
-      margin-bottom: 25px;
-      color: #cbd5e1;
+      max-width: 560px;
+      color: var(--ink-dim);
+      font-size: 1.05rem;
+      margin-bottom: 32px;
     }
 
-    .buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    .buttons { display: flex; gap: 14px; flex-wrap: wrap; }
 
     .btn {
       font-weight: 600;
-      letter-spacing: 0.3px;
-      box-shadow: 0 10px 25px rgba(147, 51, 234, 0.25);
-      padding: 12px 20px;
+      font-size: 0.92rem;
+      letter-spacing: 0.2px;
+      padding: 13px 22px;
       border-radius: 10px;
       text-decoration: none;
       color: white;
-      background: linear-gradient(135deg, #7e22ce, #9333ea);
+      background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+      box-shadow: 0 10px 28px var(--accent-dim);
       transition: 0.3s;
+      border: none;
     }
 
-    .btn:hover {
-      box-shadow: 0 15px 35px rgba(168, 85, 247, 0.35);
-      transform: translateY(-3px);
-      background: linear-gradient(135deg, #6b21a8, #7e22ce);
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 16px 36px var(--accent-dim); }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--ink);
+      box-shadow: none;
     }
 
-    section {
-      padding: 70px 0;
+    .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* STATS STRIP */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 50px;
+    }
+
+    .stat-cell {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      padding: 22px 18px;
+      text-align: center;
+    }
+
+    .stat-cell .num {
+      font-family: var(--display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-cell .label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 0; }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .section-num {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--accent);
     }
 
     .section-title {
-      font-size: 2rem;
-      margin-bottom: 25px;
-      color: #a855f7;
-      text-align: center;
+      font-family: var(--display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
     }
 
-    .about {
-      text-align: center;
-      color: #cbd5e1;
-      max-width: 800px;
-      margin: auto;
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
     }
 
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
+    .about p {
+      color: var(--ink-dim);
+      margin-bottom: 16px;
+      font-size: 1rem;
     }
+
+    .about strong { color: var(--ink); font-weight: 600; }
+
+    /* JOURNEY TIMELINE */
+    .timeline { position: relative; padding-left: 28px; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: linear-gradient(var(--accent), transparent);
+    }
+
+    .tl-item { position: relative; padding-bottom: 26px; }
+
+    .tl-item:last-child { padding-bottom: 0; }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+    }
+
+    .tl-item .tl-tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tl-item h4 {
+      font-family: var(--display);
+      font-size: 1.02rem;
+      font-weight: 600;
+      margin: 4px 0 4px;
+    }
+
+    .tl-item p { color: var(--ink-dim); font-size: 0.92rem; margin: 0; }
+
+    /* SKILLS */
+    .skills-groups { display: grid; gap: 22px; }
+
+    .skill-group-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--ink-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
 
     .skill {
-      font-size: 0.95rem;
+      font-size: 0.86rem;
       font-weight: 500;
-      background: rgba(168, 85, 247, 0.08);
-      background: rgba(20, 20, 20, 0.95);
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: 1px solid rgba(168, 85, 247, 0.2);
+      background: var(--bg-card);
+      padding: 9px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--ink-dim);
+      transition: 0.25s;
     }
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+    .skill:hover { border-color: var(--accent); color: var(--ink); transform: translateY(-2px); }
+
+    /* PROJECTS */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 
     .project-card {
-      border-radius: 22px;
-      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.08);
-      backdrop-filter: blur(8px);
-      background: rgba(20, 20, 20, 0.95);
-      padding: 20px;
-      border-radius: 15px;
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      padding: 26px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
       transition: 0.3s;
-      border: 1px solid rgba(168, 85, 247, 0.2);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
     }
 
     .project-card:hover {
-      border-color: rgba(168, 85, 247, 0.45);
-      box-shadow: 0 18px 40px rgba(168, 85, 247, 0.16);
+      border-color: var(--accent);
+      box-shadow: 0 18px 40px var(--accent-dim);
       transform: translateY(-5px);
     }
 
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
     .project-card h3 {
-      margin-bottom: 10px;
-      color: #a855f7;
+      font-family: var(--display);
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .project-score {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      background: var(--accent-dim);
+      color: var(--accent);
+      padding: 4px 9px;
+      border-radius: 6px;
+      white-space: nowrap;
     }
 
     .project-card p {
-      color: #cbd5e1;
+      color: var(--ink-dim);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    .project-tags span {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--ink-faint);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 5px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 36px 0;
+      color: var(--ink-faint);
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+
+    .cat-line {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      opacity: 0.7;
       margin-bottom: 10px;
     }
 
-    footer {
-      text-align: center;
-      padding: 25px 0;
-      color: #94a3b8;
-      border-top: 1px solid #334155;
-    }
-
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-      }
+      nav ul { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .stats-strip { grid-template-columns: repeat(2, 1fr); }
     }
-  
-    .theme-toggle {
-      font-size: 1.4rem;
-      box-shadow: 0 8px 25px rgba(168, 85, 247, 0.25);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      font-size: 1.2rem;
-      background: #9333ea;
-      color: white;
-      transition: 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .theme-toggle:hover {
-      box-shadow: 0 12px 30px rgba(168, 85, 247, 0.35);
-      transform: rotate(15deg) scale(1.05);
-    }
-
-    body.light {
-      background: #f5e6dc;
-      color: #4b2e2e;
-    }
-
-    body.light nav {
-      background: rgba(245, 230, 220, 0.95);
-      border-bottom: 1px solid rgba(236, 72, 153, 0.15);
-    }
-
-    body.light nav a {
-      color: #3b2f2f;
-    }
-
-    body.light .project-card,
-    body.light .skill {
-      background: #f9d5e5;
-      border: 1px solid rgba(236, 72, 153, 0.18);
-      color: #3b2f2f;
-    }
-
-    body.light .hero p,
-    body.light .about,
-    body.light .project-card p,
-    body.light footer {
-      color: #5c4b51;
-    }
-
-    body.light .btn {
-      background: linear-gradient(135deg, #f472b6, #ec4899);
-    }
-
-    body.light .btn:hover {
-      background: linear-gradient(135deg, #ec4899, #db2777);
-    }
-
   </style>
 </head>
 <body>
@@ -276,107 +441,244 @@
   <div class="container">
 
     <nav>
-      <h2>anay.</h2>
-
+      <h2>anay<span>.duggal</span></h2>
       <div class="right-nav">
         <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-      </ul>
-
+          <li><a href="#about">About</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
         <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">😼</button>
       </div>
     </nav>
 
     <section class="hero">
-      <h1>Hi, I'm <span>Anay Duggal</span></h1>
-
+      <div class="eyebrow">CURRENTLY BUILDING — KAGGLE PORTFOLIO, PHASE 6/7</div>
+      <h1>I turn messy data and<br>messy logic into <span class="accent">working things</span>.</h1>
       <p>
-        CSE student passionate about DSA, C++, Python, Data Analysis,
-        and problem solving. writing clean LeetCode explanations, building minimal projects, and creating things with personality 🐈
+        2nd-year CSE student at IIIT Kottayam. I spend my semester breaks self-teaching
+        data science from scratch and grinding DSA on the side — one project,
+        one notebook, one solved problem at a time. Powered by cats and late-night coffee 🐈
       </p>
-
       <div class="buttons">
-        <a href="https://github.com/" class="btn" target="_blank">GitHub</a>
+        <a href="https://github.com/anayduggal22" class="btn" target="_blank">GitHub</a>
+        <a href="https://leetcode.com/u/anay07/" class="btn ghost" target="_blank">LeetCode</a>
+        <a href="https://linkedin.com/in/anay-duggal-54196a376" class="btn ghost" target="_blank">LinkedIn</a>
+      </div>
 
-        <a href="https://leetcode.com/u/Anay07/" class="btn" target="_blank">LeetCode</a>
-
-        <a href="https://linkedin.com/" class="btn" target="_blank">LinkedIn</a>
+      <div class="stats-strip">
+        <div class="stat-cell"><span class="num">200+</span><span class="label">LeetCode Solved</span></div>
+        <div class="stat-cell"><span class="num">8+</span><span class="label">Projects Shipped</span></div>
+        <div class="stat-cell"><span class="num">2</span><span class="label">Kaggle Comps</span></div>
+        <div class="stat-cell"><span class="num">0.782</span><span class="label">Best Kaggle Score</span></div>
       </div>
     </section>
 
     <section id="about">
-      <h2 class="section-title">About Me</h2>
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <span class="section-title">About Me</span>
+      </div>
+      <div class="about-grid">
+        <div class="about">
+          <p>
+            I'm <strong>Anay</strong> — a second-year CSE student who decided semester breaks
+            are for building, not resting. What started as "let me learn pandas" turned into
+            a full self-taught roadmap: Python foundations, the entire NumPy/Matplotlib/Seaborn
+            stack, statistics, scikit-learn, SQL, and now real Kaggle competitions.
+          </p>
+          <p>
+            My method is simple and a little stubborn: watch a concept once, then type every
+            line of code from scratch — no copy-paste. Every topic ends in a project,
+            every project gets pushed to GitHub with a proper README, and every morning
+            starts with a blank-notebook revision drill before anything new begins.
+          </p>
+          <p>
+            Outside of data science, I run on competitive programming — currently 200+
+            problems deep on LeetCode, with trees and graphs as my strong suit and
+            DP slowly becoming one too.
+          </p>
+        </div>
+        <div class="about">
+          <p>
+            <strong>Right now:</strong> deep in Phase 6 of my roadmap — Kaggle EDA and
+            portfolio projects. Just wrapped the Titanic and House Prices competitions,
+            building toward three larger portfolio projects (Indian Agriculture, COVID
+            Dashboard, IPL Analysis) before a capstone.
+          </p>
+          <p>
+            <strong>Up next:</strong> Phase 7 — advanced ML with XGBoost and ensembles,
+            a first pass at neural networks with Keras/TensorFlow, and shipping a model
+            with Streamlit so it's actually usable by someone other than me.
+          </p>
+          <p>
+            I like minimal UI, readable code, and proof over promises — which is why
+            this page is mostly just a list of things I actually finished.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <p class="about">
-        I enjoy competitive programming, writing LeetCode explanations after solving problems, and building small projects that feel clean and personal. I like minimal UI, readable code, and random late-night coding sessions with music and coffee 🐈
-      </p>
+    <section id="journey">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <span class="section-title">The Journey So Far</span>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-tag">Foundations</span>
+          <h4>Python, Git & DSA from the ground up</h4>
+          <p>Learned Git from scratch, transitioned from Java/OOP knowledge into Python, and started Striver's A2Z DSA sheet with weekend revision.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-tag">Phase 1–3</span>
+          <h4>The Data Science Core</h4>
+          <p>Python foundations, pandas, NumPy, Matplotlib, Seaborn, government API integration, and statistics — distributions, hypothesis testing, confidence intervals, outlier detection.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-tag">Phase 4–5</span>
+          <h4>Machine Learning & SQL</h4>
+          <p>scikit-learn end to end — regression, trees, ensembles, clustering, GridSearchCV, pipelines — plus SQL across SQLite and PostgreSQL with real pandas integration.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-tag">Phase 6 — Now</span>
+          <h4>Kaggle Competitions & Portfolio</h4>
+          <p>Two competitions submitted (Titanic, House Prices), full preprocessing pipelines built, three portfolio projects in progress.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-tag">Phase 7 — Next</span>
+          <h4>Advanced ML & Deployment</h4>
+          <p>XGBoost, ensemble methods, neural network basics, CNNs, and shipping a deployed model with Streamlit.</p>
+        </div>
+      </div>
     </section>
 
     <section id="skills">
-      <h2 class="section-title">Skills</h2>
-
-      <div class="skills">
-        <div class="skill">C++</div>
-        <div class="skill">Python</div>
-        <div class="skill">DSA</div>
-        <div class="skill">NumPy</div>
-        <div class="skill">Pandas</div>
-        <div class="skill">Matplotlib</div>
-        <div class="skill">Seaborn</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">SQL</div>
-        <div class="skill">scikit-learn</div>
-        <div class="skill">Statistics</div>
-        <div class="skill">Git & GitHub</div>
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <span class="section-title">Skills</span>
+      </div>
+      <div class="skills-groups">
+        <div>
+          <span class="skill-group-label">Languages</span>
+          <div class="skills">
+            <div class="skill">Python</div>
+            <div class="skill">C++</div>
+            <div class="skill">C</div>
+            <div class="skill">Java</div>
+            <div class="skill">SQL</div>
+            <div class="skill">JavaScript</div>
+          </div>
+        </div>
+        <div>
+          <span class="skill-group-label">Data Science</span>
+          <div class="skills">
+            <div class="skill">Pandas</div>
+            <div class="skill">NumPy</div>
+            <div class="skill">Matplotlib</div>
+            <div class="skill">Seaborn</div>
+            <div class="skill">Statistics</div>
+            <div class="skill">SciPy</div>
+          </div>
+        </div>
+        <div>
+          <span class="skill-group-label">Machine Learning</span>
+          <div class="skills">
+            <div class="skill">scikit-learn</div>
+            <div class="skill">Pipelines & ColumnTransformer</div>
+            <div class="skill">GridSearchCV</div>
+            <div class="skill">Random Forest</div>
+            <div class="skill">Kaggle</div>
+          </div>
+        </div>
+        <div>
+          <span class="skill-group-label">Tools</span>
+          <div class="skills">
+            <div class="skill">Git & GitHub</div>
+            <div class="skill">Jupyter</div>
+            <div class="skill">VS Code</div>
+            <div class="skill">PostgreSQL</div>
+            <div class="skill">HTML / CSS</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="projects">
-      <h2 class="section-title">Projects</h2>
-
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <span class="section-title">Projects</span>
+      </div>
       <div class="projects">
 
-        <div class="project-card">
-          <h3>Data Science Journey</h3>
+        <a class="project-card" href="https://github.com/anayduggal22/kaggle-titanic" target="_blank">
+          <div class="project-top">
+            <h3>Titanic Survival Predictor</h3>
+            <span class="project-score">0.78229</span>
+          </div>
+          <p>Kaggle competition — full EDA, feature engineering (titles, family size, age/fare bands), and a Random Forest pipeline.</p>
+          <div class="project-tags"><span>scikit-learn</span><span>pandas</span><span>Kaggle</span></div>
+        </a>
 
-          <p>
-            Learning Pandas, NumPy, Matplotlib, Seaborn, scikit-learn, SQL, statistics, and working towards real Kaggle projects.
-          </p>
-        </div>
+        <a class="project-card" href="https://github.com/anayduggal22/kaggle-house-prices" target="_blank">
+          <div class="project-top">
+            <h3>House Prices Regression</h3>
+            <span class="project-score">RMSE 0.1447</span>
+          </div>
+          <p>Advanced regression on 79 features with log-transformed targets and a full preprocessing ColumnTransformer pipeline.</p>
+          <div class="project-tags"><span>RandomForestRegressor</span><span>Kaggle</span></div>
+        </a>
 
-        <div class="project-card">
-          <h3>DSA & LeetCode Solutions</h3>
+        <a class="project-card" href="https://github.com/anayduggal22/Ml_Hyperparameter_Tuning" target="_blank">
+          <div class="project-top">
+            <h3>ML Hyperparameter Tuning</h3>
+          </div>
+          <p>GridSearchCV combined with pipelines on the Breast Cancer dataset to systematically tune model performance.</p>
+          <div class="project-tags"><span>GridSearchCV</span><span>scipy</span></div>
+        </a>
 
-          <p>
-            Solving LeetCode problems regularly and writing detailed explanations and approaches for solutions.
-          </p>
-        </div>
+        <a class="project-card" href="https://github.com/anayduggal22/Iris_Comparison" target="_blank">
+          <div class="project-top">
+            <h3>Iris Model Comparison</h3>
+          </div>
+          <p>Head-to-head comparison of 5 classification algorithms on the classic Iris dataset.</p>
+          <div class="project-tags"><span>scikit-learn</span><span>seaborn</span></div>
+        </a>
 
-        <div class="project-card">
-          <h3>Portfolio Website</h3>
+        <a class="project-card" href="https://github.com/anayduggal22/IPL-Cricket-Stats" target="_blank">
+          <div class="project-top">
+            <h3>IPL Stats Analyser</h3>
+          </div>
+          <p>Statistical analysis of IPL batting data using Z-scores to identify standout and outlier performances.</p>
+          <div class="project-tags"><span>scipy</span><span>seaborn</span></div>
+        </a>
 
-          <p>
-            Built a minimal portfolio website with custom themes, cat easter eggs, and clean UI inspired by my coding style.
-          </p>
-        </div>
+        <a class="project-card" href="https://github.com/anayduggal22/Crop-Yield-Predictor" target="_blank">
+          <div class="project-top">
+            <h3>Crop Yield Predictor</h3>
+          </div>
+          <p>Linear regression model predicting farm yield from agricultural input data.</p>
+          <div class="project-tags"><span>scikit-learn</span><span>pandas</span></div>
+        </a>
+
+        <a class="project-card" href="https://github.com/anayduggal22/Weather_Dashboard" target="_blank">
+          <div class="project-top">
+            <h3>Weather Dashboard</h3>
+          </div>
+          <p>Real-time weather dashboard for Indian cities, built on the Open-Meteo API.</p>
+          <div class="project-tags"><span>requests</span><span>matplotlib</span></div>
+        </a>
 
       </div>
     </section>
 
-    <div style="text-align:center; margin-top:40px; opacity:0.6; font-size:0.9rem;">
-      🐈 <span id="cat-text">meow.exe running...</span>
-    </div>
-
     <footer>
-      <p>© 2026 Anay Duggal | Portfolio Website</p>
+      <p class="cat-line">🐈 <span id="cat-text">meow.exe running...</span></p>
+      <p>© 2026 Anay Duggal — built from scratch, like everything else here.</p>
     </footer>
 
   </div>
-
 
   <script>
     const catMessages = [
@@ -384,7 +686,8 @@
       'cat detected near keyboard 🐾',
       'debugging with emotional support cat',
       'leetcode + coffee + cat energy',
-      'the cat approves this portfolio'
+      'the cat approves this portfolio',
+      'currently training a model and a cat'
     ];
 
     setInterval(() => {
@@ -395,15 +698,8 @@
 
     function toggleTheme() {
       document.body.classList.toggle('light');
-
       const btn = document.getElementById('themeBtn');
-
-      if (document.body.classList.contains('light')) {
-        btn.innerHTML = '🐱';
-      }
-      else {
-        btn.innerHTML = '😼';
-      }
+      btn.innerHTML = document.body.classList.contains('light') ? '🐱' : '😼';
     }
   </script>
 
