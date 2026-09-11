@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Anay Duggal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="cursor-glow"></div>
+
+  <div class="container">
+
+    <nav>
+      <h2>anay<span>.duggal</span></h2>
+      <div class="right-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">😼</button>
+      </div>
+    </nav>
+
+    <section class="page-hero">
+      <h1>Semester breaks are for building, not resting.</h1>
+    </section>
+
+    <section>
+      <div class="about-grid">
+        <div class="about reveal">
+          <p>
+            I'm <strong>Anay</strong> — a second-year CSE student at IIIT Kottayam who decided
+            semester breaks are for building. What started as "let me learn pandas" turned into
+            a full self-taught roadmap: Python foundations, the entire NumPy/Matplotlib/Seaborn
+            stack, statistics, scikit-learn, SQL, real Kaggle competitions, and now NLP.
+          </p>
+          <p>
+            My method is simple and a little stubborn: watch a concept once, then type every
+            line of code from scratch. Every topic ends in a project,
+            every portfolio project gets pushed to GitHub with a proper README.
+          </p>
+          <p>
+            Outside of data science, I run on competitive programming — currently 400+
+            problems deep on LeetCode via Striver's A2Z sheet, with DP and graphs as my
+            strong suit.
+          </p>
+        </div>
+        <div class="about reveal">
+          <p>
+            <strong>Right now:</strong> in Phase 8 — NLP. Built a spam classifier comparing
+            Bag-of-Words and TF-IDF with Naive Bayes and Logistic Regression, explored
+            pretrained word embeddings with GloVe, and just finished an LSTM built on top of
+            a from-scratch embedding layer.
+          </p>
+          <p>
+            <strong>Up next:</strong> Phase 9 — MLOps and deployment depth: Docker, FastAPI,
+            and model monitoring, so a model can live somewhere other than a notebook.
+          </p>
+        </div>
+      </div>
+
+      <div class="facts-row">
+        <div class="fact-card reveal">
+          <span class="fact-emoji">🐈</span>
+          <h4>Cat-adjacent</h4>
+          <p>Genuinely likes cats. The footer knows this and will not let you forget it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="section-head reveal">
+        <h2 class="section-title">The journey so far</h2>
+        <p class="section-sub">From Git basics to a deployed fraud-detection model, phase by phase.</p>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <span class="tl-tag">Foundations</span>
+          <h4>Python, Git &amp; DSA from the ground up</h4>
+          <p>Learned Git from scratch, transitioned from Java/OOP knowledge into Python, and started Striver's A2Z DSA sheet with weekend revision.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-tag">Phase 1–3</span>
+          <h4>The data science core</h4>
+          <p>Python foundations, pandas, NumPy, Matplotlib, Seaborn, government API integration, and statistics — distributions, hypothesis testing, confidence intervals, outlier detection.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-tag">Phase 4–5</span>
+          <h4>Machine learning &amp; SQL</h4>
+          <p>scikit-learn end to end — regression, trees, ensembles, clustering, GridSearchCV, pipelines — plus SQL across SQLite and PostgreSQL with real pandas integration.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-tag">Phase 6</span>
+          <h4>Kaggle competitions &amp; portfolio</h4>
+          <p>Titanic, House Prices, and Digit Recognizer submitted; Indian Agriculture, COVID India Dashboard and IPL Analysis built; capstone Customer Churn Prediction with class-imbalance handling and a tuned Random Forest.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-tag">Phase 7</span>
+          <h4>Advanced ML &amp; deployment</h4>
+          <p>XGBoost, Voting and Stacking ensembles, a Keras neural network, a CNN on MNIST (99.09% test accuracy), and a Credit Card Fraud Detection capstone deployed as a Streamlit app.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-tag">Phase 8 — Now</span>
+          <h4>NLP</h4>
+          <p>Tokenization and text cleaning with NLTK, Bag-of-Words vs TF-IDF, a deployed SMS Spam Classifier, pretrained GloVe embeddings, and an LSTM built on a from-scratch embedding layer.</p>
+        </div>
+        <div class="tl-item">
+          <span class="tl-tag">Phase 9 — Next</span>
+          <h4>MLOps &amp; deployment depth</h4>
+          <p>Docker, FastAPI, and model monitoring — taking models further past a single Streamlit script.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p class="cat-line">🐈 <span id="cat-text">meow.exe running...</span></p>
+      <p>© 2026 Anay Duggal</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

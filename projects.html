@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Anay Duggal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="cursor-glow"></div>
+
+  <div class="container">
+
+    <nav>
+      <h2>anay<span>.duggal</span></h2>
+      <div class="right-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">😼</button>
+      </div>
+    </nav>
+
+    <section class="page-hero">
+      <h1>14 projects, in roughly the order I learned to stop overfitting.</h1>
+      <p>From a first Titanic submission to a deployed fraud detector. Filter by what kind of work it is.</p>
+    </section>
+
+    <section>
+      <div class="filter-row reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="deployed">Deployed</button>
+        <button class="filter-btn" data-filter="kaggle">Kaggle</button>
+        <button class="filter-btn" data-filter="nlp">NLP</button>
+        <button class="filter-btn" data-filter="cv">Computer vision</button>
+        <button class="filter-btn" data-filter="analysis">Analysis</button>
+      </div>
+
+      <div class="projects">
+
+        <a class="project-card" data-tags="deployed" href="https://github.com/anayduggal22/Credit_Card_Fraud_Detection" target="_blank">
+          <div class="project-top">
+            <h3>Credit Card Fraud Detection</h3>
+            <span class="project-score">0.8727 PR-AUC</span>
+          </div>
+          <p>Phase 7 capstone on 284,807 highly imbalanced transactions (0.17% fraud). Weighted XGBoost beat Random Forest, ensembles, and a Keras NN on PR-AUC; deployed as a Streamlit app with CSV upload.</p>
+          <div class="project-tags"><span>XGBoost</span><span>imbalanced-learn</span><span>Streamlit</span></div>
+        </a>
+
+        <a class="project-card" data-tags="deployed" href="https://github.com/anayduggal22" target="_blank">
+          <div class="project-top">
+            <h3>Customer Churn Prediction</h3>
+            <span class="project-score">0.8425 AUC</span>
+          </div>
+          <p>Phase 6/7 capstone on the Telco dataset. Compared class_weight vs SMOTE for imbalance, tuned via GridSearchCV for recall, and shipped a tuned Random Forest at 0.81 recall.</p>
+          <div class="project-tags"><span>scikit-learn</span><span>SMOTE</span><span>Streamlit</span></div>
+        </a>
+
+        <a class="project-card" data-tags="deployed nlp" href="https://github.com/anayduggal22" target="_blank">
+          <div class="project-top">
+            <h3>SMS Spam Classifier</h3>
+            <span class="project-score">98.48% acc</span>
+          </div>
+          <p>~5,572 texts, BoW vs TF-IDF across Naive Bayes and Logistic Regression. Naive Bayes + BoW won and got deployed; a from-scratch-embedding LSTM was built afterward for comparison and came in lower.</p>
+          <div class="project-tags"><span>NLTK</span><span>scikit-learn</span><span>Streamlit</span></div>
+        </a>
+
+        <a class="project-card" data-tags="cv" href="https://github.com/anayduggal22" target="_blank">
+          <div class="project-top">
+            <h3>CNN MNIST Classifier</h3>
+            <span class="project-score">99.09% acc</span>
+          </div>
+          <p>A Conv2D + MaxPooling2D + Dense network in Keras, 121,930 parameters, trained from scratch on the classic digit set.</p>
+          <div class="project-tags"><span>Keras</span><span>TensorFlow</span><span>CNN</span></div>
+        </a>
+
+        <a class="project-card" data-tags="analysis" href="https://github.com/anayduggal22/IPL-Cricket-Stats" target="_blank">
+          <div class="project-top">
+            <h3>IPL Analysis &amp; Win Prediction</h3>
+          </div>
+          <p>Z-score outlier analysis on batting stats, plus a win-prediction model that found static pre-match features give near-random predictions — a real finding, not a failed model.</p>
+          <div class="project-tags"><span>scipy</span><span>seaborn</span><span>scikit-learn</span></div>
+        </a>
+
+        <a class="project-card" data-tags="analysis" href="https://github.com/anayduggal22" target="_blank">
+          <div class="project-top">
+            <h3>COVID India Dashboard</h3>
+          </div>
+          <p>Time-series exploration of India's COVID case data with pandas and a set of Matplotlib/Seaborn dashboards.</p>
+          <div class="project-tags"><span>pandas</span><span>matplotlib</span></div>
+        </a>
+
+        <a class="project-card" data-tags="analysis" href="https://github.com/anayduggal22" target="_blank">
+          <div class="project-top">
+            <h3>Indian Agriculture Analysis</h3>
+          </div>
+          <p>Government agricultural data pulled via API, cleaned in pandas, and queried through a SQLite backend.</p>
+          <div class="project-tags"><span>pandas</span><span>SQLite</span></div>
+        </a>
+
+        <a class="project-card" data-tags="kaggle" href="https://github.com/anayduggal22/kaggle-titanic" target="_blank">
+          <div class="project-top">
+            <h3>Titanic Survival Predictor</h3>
+            <span class="project-score">0.78229</span>
+          </div>
+          <p>Kaggle competition — full EDA, feature engineering (titles, family size, age/fare bands), and a Random Forest pipeline.</p>
+          <div class="project-tags"><span>scikit-learn</span><span>pandas</span><span>Kaggle</span></div>
+        </a>
+
+        <a class="project-card" data-tags="kaggle" href="https://github.com/anayduggal22/kaggle-house-prices" target="_blank">
+          <div class="project-top">
+            <h3>House Prices Regression</h3>
+            <span class="project-score">RMSE 0.1447</span>
+          </div>
+          <p>Advanced regression on 79 features with log-transformed targets and a full preprocessing ColumnTransformer pipeline.</p>
+          <div class="project-tags"><span>RandomForestRegressor</span><span>Kaggle</span></div>
+        </a>
+
+        <a class="project-card" data-tags="kaggle cv" href="https://github.com/anayduggal22" target="_blank">
+          <div class="project-top">
+            <h3>Digit Recognizer</h3>
+            <span class="project-score">0.965</span>
+          </div>
+          <p>Kaggle's MNIST-as-CSV competition, solved with a Random Forest on raw pixel values before the later CNN revisit.</p>
+          <div class="project-tags"><span>scikit-learn</span><span>Kaggle</span></div>
+        </a>
+
+        <a class="project-card" data-tags="analysis" href="https://github.com/anayduggal22/Ml_Hyperparameter_Tuning" target="_blank">
+          <div class="project-top">
+            <h3>ML Hyperparameter Tuning</h3>
+          </div>
+          <p>GridSearchCV combined with pipelines on the Breast Cancer dataset to systematically tune model performance.</p>
+          <div class="project-tags"><span>GridSearchCV</span><span>scipy</span></div>
+        </a>
+
+        <a class="project-card" data-tags="analysis" href="https://github.com/anayduggal22/Iris_Comparison" target="_blank">
+          <div class="project-top">
+            <h3>Iris Model Comparison</h3>
+          </div>
+          <p>Head-to-head comparison of five classification algorithms on the classic Iris dataset.</p>
+          <div class="project-tags"><span>scikit-learn</span><span>seaborn</span></div>
+        </a>
+
+        <a class="project-card" data-tags="analysis" href="https://github.com/anayduggal22/Crop-Yield-Predictor" target="_blank">
+          <div class="project-top">
+            <h3>Crop Yield Predictor</h3>
+          </div>
+          <p>Linear regression model predicting farm yield from agricultural input data.</p>
+          <div class="project-tags"><span>scikit-learn</span><span>pandas</span></div>
+        </a>
+
+        <a class="project-card" data-tags="analysis" href="https://github.com/anayduggal22/Weather_Dashboard" target="_blank">
+          <div class="project-top">
+            <h3>Weather Dashboard</h3>
+          </div>
+          <p>Real-time weather dashboard for Indian cities, built on the Open-Meteo API.</p>
+          <div class="project-tags"><span>requests</span><span>matplotlib</span></div>
+        </a>
+
+      </div>
+    </section>
+
+    <footer>
+      <p class="cat-line">🐈 <span id="cat-text">meow.exe running...</span></p>
+      <p>© 2026 Anay Duggal — built from scratch, like everything else here.</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

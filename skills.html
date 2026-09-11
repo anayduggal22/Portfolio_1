@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills | Anay Duggal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="cursor-glow"></div>
+
+  <div class="container">
+
+    <nav>
+      <h2>anay<span>.duggal</span></h2>
+      <div class="right-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="projects.html">Projects</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">😼</button>
+      </div>
+    </nav>
+
+    <section class="page-hero">
+      <h1>Everything I've actually used.</h1>
+      <p>No wishlist entries — every language, library, and tool below has shown up in a real project or notebook.</p>
+    </section>
+
+    <section>
+      <span class="skills-total">
+        <span class="count" id="skills-total-count" data-count="0">0</span>
+        <span>things across 7 categories</span>
+      </span>
+
+      <div class="skills-groups">
+
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <span class="skill-group-label">Languages</span>
+            <span class="skill-group-count"></span>
+          </div>
+          <div class="skills">
+            <div class="skill">Python</div>
+            <div class="skill">C++</div>
+            <div class="skill">C</div>
+            <div class="skill">Java</div>
+            <div class="skill">SQL</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">HTML / CSS</div>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <span class="skill-group-label">Data handling &amp; visualization</span>
+            <span class="skill-group-count"></span>
+          </div>
+          <div class="skills">
+            <div class="skill">Pandas</div>
+            <div class="skill">NumPy</div>
+            <div class="skill">Matplotlib</div>
+            <div class="skill">Seaborn</div>
+            <div class="skill">SciPy</div>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <span class="skill-group-label">Statistics</span>
+            <span class="skill-group-count"></span>
+          </div>
+          <div class="skills">
+            <div class="skill">Hypothesis testing</div>
+            <div class="skill">Probability distributions</div>
+            <div class="skill">Confidence intervals</div>
+            <div class="skill">Outlier detection</div>
+            <div class="skill">Z-scores</div>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <span class="skill-group-label">Machine learning</span>
+            <span class="skill-group-count"></span>
+          </div>
+          <div class="skills">
+            <div class="skill">scikit-learn</div>
+            <div class="skill">Pipelines &amp; ColumnTransformer</div>
+            <div class="skill">GridSearchCV / RandomizedSearchCV</div>
+            <div class="skill">Random Forest</div>
+            <div class="skill">XGBoost</div>
+            <div class="skill">Voting &amp; Stacking ensembles</div>
+            <div class="skill">imbalanced-learn (SMOTE)</div>
+            <div class="skill">Kaggle competitions</div>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <span class="skill-group-label">Deep learning</span>
+            <span class="skill-group-count"></span>
+          </div>
+          <div class="skills">
+            <div class="skill">Keras</div>
+            <div class="skill">TensorFlow</div>
+            <div class="skill">CNNs (Conv2D / MaxPooling2D)</div>
+            <div class="skill">RNN &amp; LSTM</div>
+            <div class="skill">Word2Vec / GloVe embeddings</div>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <span class="skill-group-label">NLP</span>
+            <span class="skill-group-count"></span>
+          </div>
+          <div class="skills">
+            <div class="skill">NLTK</div>
+            <div class="skill">Tokenization &amp; text cleaning</div>
+            <div class="skill">Bag-of-Words / TF-IDF</div>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <span class="skill-group-label">Databases</span>
+            <span class="skill-group-count"></span>
+          </div>
+          <div class="skills">
+            <div class="skill">SQLite</div>
+            <div class="skill">PostgreSQL</div>
+            <div class="skill">MySQL</div>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <span class="skill-group-label">Tools &amp; workflow</span>
+            <span class="skill-group-count"></span>
+          </div>
+          <div class="skills">
+            <div class="skill">Git &amp; GitHub</div>
+            <div class="skill">Jupyter</div>
+            <div class="skill">VS Code</div>
+            <div class="skill">Streamlit</div>
+            <div class="skill">joblib</div>
+            <div class="skill">venv</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head reveal">
+        <h2 class="section-title">On LeetCode</h2>
+        <p class="section-sub">400+ problems deep via Striver's A2Z sheet, one a day alongside college. Strong in DP and graphs, still building up tries, greedy, and heaps.</p>
+      </div>
+      <div class="buttons reveal">
+        <a href="https://leetcode.com/u/anay07/" class="btn" target="_blank">See my LeetCode profile</a>
+      </div>
+    </section>
+
+    <footer>
+      <p class="cat-line">🐈 <span id="cat-text">meow.exe running...</span></p>
+      <p>© 2026 Anay Duggal</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
